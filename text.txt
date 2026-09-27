@@ -1,0 +1,11 @@
+a-share-daily-report1/
+├── .github/
+│   └── workflows/
+│       └── daily-report.yml
+├── templates/
+│   └── report.html
+├── fetch_data.py
+├── analyze.py
+├── generate.py
+├── config.py
+└── requirements.txt
