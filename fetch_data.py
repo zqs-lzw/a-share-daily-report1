@@ -34,17 +34,45 @@ def get_last_trading_day():
 
 
 def fetch_all_spot():
-    """获取全A股实时行情"""
+    """获取全A股实时行情，带备用数据源"""
     logger.info("正在获取全A股实时行情...")
-    for attempt in range(3):
+    
+    # 方案一：尝试东方财富接口（优先，数据最全）
+    for attempt in range(2):
         try:
             df = ak.stock_zh_a_spot_em()
-            logger.info(f"成功获取 {len(df)} 只股票数据")
-            return df
+            if df is not None and not df.empty:
+                logger.info(f"成功通过东方财富获取 {len(df)} 只股票数据")
+                return df
         except Exception as e:
-            logger.warning(f"第{attempt+1}次获取行情失败: {e}")
+            logger.warning(f"东方财富接口第{attempt+1}次失败: {e}")
+            time.sleep(3)
+
+    # 方案二：东方财富失败，切换到新浪财经接口（对海外 IP 较友好）
+    logger.info("东方财富接口不可用，尝试通过新浪财经获取行情数据...")
+    for attempt in range(3):
+        try:
+            df = ak.stock_zh_a_spot()
+            if df is not None and not df.empty:
+                logger.info(f"成功通过新浪财经获取 {len(df)} 只股票数据")
+                # 新浪接口的列名与东财不同，需要标准化，以适配 analyze.py
+                df = df.rename(columns={
+                    "code": "代码",
+                    "name": "名称",
+                    "trade": "最新价",
+                    "pricechange": "涨跌额",
+                    "changepercent": "涨跌幅",
+                    "amount": "成交额"
+                })
+                # 处理代码格式（新浪的 code 带 sh/sz 前缀，需要去除）
+                if "代码" in df.columns:
+                    df["代码"] = df["代码"].astype(str).str.replace(r'^[a-zA-Z]+', '', regex=True)
+                return df
+        except Exception as e:
+            logger.warning(f"新浪接口第{attempt+1}次失败: {e}")
             time.sleep(5)
-    raise RuntimeError("获取全A股行情失败，已重试3次")
+
+    raise RuntimeError("获取全A股行情失败，东方财富和新浪接口均不可用")
 
 
 def fetch_index_data():
