@@ -1,39 +1,39 @@
-<!DOCTYPE html>
+
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{ report_date }} A股深度复盘</title>
-<style>
+<标题>{{ report_date }} A股深度复盘</标题>
+<样式>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background-color: #0D1117; color: #F0F6FC; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.6; padding: 20px; }
-.container { max-width: 1200px; margin: 0 auto; }
-h1 { text-align: center; font-size: 28px; color: #FFD700; margin-bottom: 8px; }
-.subtitle { text-align: center; color: #8B949E; font-size: 14px; margin-bottom: 30px; }
-h2 { color: #58A6FF; font-size: 22px; margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 2px solid #30363D; }
-h2 .emoji { margin-right: 8px; }
-h3 { color: #F0F6FC; font-size: 16px; margin: 15px 0 10px 0; }
-.index-card { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
-.card { background: #161B22; border: 1px solid #30363D; border-radius: 12px; padding: 20px; text-align: center; }
-.card h3 { font-size: 14px; color: #8B949E; margin-bottom: 8px; }
-.card .value { font-size: 32px; font-weight: bold; margin-bottom: 4px; }
-.card .change { font-size: 16px; font-weight: bold; }
-.market-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
-.stat { background: #161B22; border: 1px solid #30363D; border-radius: 8px; padding: 16px; text-align: center; }
-.stat .num { font-size: 28px; font-weight: bold; }
-.stat .label { font-size: 12px; color: #8B949E; margin-top: 4px; }
-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
-th { background: #21262D; color: #8B949E; padding: 10px 12px; text-align: left; font-weight: 600; border-bottom: 2px solid #30363D; }
-td { padding: 8px 12px; border-bottom: 1px solid #21262D; }
-tr:hover { background: rgba(88, 166, 255, 0.05); }
-.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
-.tag-red { background: rgba(232, 69, 69, 0.2); color: #E84545; }
-.tag-green { background: rgba(0, 168, 107, 0.2); color: #00A86B; }
-.tag-gold { background: rgba(255, 215, 0, 0.2); color: #FFD700; }
-.tag-blue { background: rgba(88, 166, 255, 0.2); color: #58A6FF; }
-.tag-purple { background: rgba(188, 140, 255, 0.2); color: #BC8CFF; }
-.tag-gray { background: rgba(139, 148, 158, 0.2); color: #8B949E; }
-.tag-orange { background: rgba(255, 165, 0, 0.2); color: #FFA500; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .hl-red { color: #E84545; font-weight: bold; }
 .hl-green { color: #00A86B; font-weight: bold; }
 .hl-gold { color: #FFD700; font-weight: bold; }
@@ -64,8 +64,8 @@ tr:hover { background: rgba(88, 166, 255, 0.05); }
   table { font-size: 11px; }
   th, td { padding: 6px 8px; }
 }
-</style>
-</head>
+style>
+head>
 <body>
 <div class="container">
 
@@ -254,7 +254,7 @@ tr:hover { background: rgba(88, 166, 255, 0.05); }
 </div>
 
 <!-- ==================== 第五章：跌停风险警示 ==================== -->
-{% if dt_pool is not empty and dt_count > 0 %}
+{% if dt_pool is not none and dt_pool|length > 0 and dt_count > 0 %}
 <h2><span class="emoji">⚠️</span>第五章：跌停风险警示</h2>
 <table>
   <thead>
