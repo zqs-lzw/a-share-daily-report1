@@ -1,1 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ report_date }} A股深度复盘</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: #0D1117; color: #F0F6FC; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.6; padding: 20px; }
+.container { max-width: 1200px; margin: 0 auto; }
+h1 { text-align: center; font-size: 28px; color: #FFD700; margin-bottom: 8px; }
+.subtitle { text-align: center; color: #8B949E; font-size: 14px; margin-bottom: 30px; }
+h2 { color: #58A6FF; font-size: 22px; margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 2px solid #30363D; }
+h2 .emoji { margin-right: 8px; }
+h3 { color: #F0F6FC; font-size: 16px; margin: 15px 0 10px 0; }
+.index-card { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+.card { background: #161B22; border: 1px solid #30363D; border-radius: 12px; padding: 20px; text-align: center; }
+.card h3 { font-size: 14px; color: #8B949E; margin-bottom: 8px; }
+.card .value { font-size: 32px; font-weight: bold; margin-bottom: 4px; }
+.card .change { font-size: 16px; font-weight: bold; }
+.market-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+.stat { background: #161B22; border: 1px solid #30363D; border-radius: 8px; padding: 16px; text-align: center; }
+.stat .num { font-size: 28px; font-weight: bold; }
+.stat .label { font-size: 12px; color: #8B949E; margin-top: 4px; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+th { background: #21262D; color: #8B949E; padding: 10px 12px; text-align: left; font-weight: 600; border-bottom: 2px solid #30363D; }
+td { padding: 8px 12px; border-bottom: 1px solid #21262D; }
+tr:hover { background: rgba(88, 166, 255, 0.05); }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+.tag-red { background: rgba(232, 69, 69, 0.2); color: #E84545; }
+.tag-green { background: rgba(0, 168, 107, 0.2); color: #00A86B; }
+.tag-gold { background: rgba(255, 215, 0, 0.2); color: #FFD700; }
+.tag-blue { background: rgba(88, 166, 255, 0.2); color: #58A6FF; }
+.tag-purple { background: rgba(188, 140, 255, 0.2); color: #BC8CFF; }
+.tag-gray { background: rgba(139, 148, 158, 0.2); color: #8B949E; }
+.tag-orange { background: rgba(255, 165, 0, 0.2); color: #FFA500; }
+.hl-red { color: #E84545; font-weight: bold; }
+.hl-green { color: #00A86B; font-weight: bold; }
+.hl-gold { color: #FFD700; font-weight: bold; }
+.hl-blue { color: #58A6FF; font-weight: bold; }
+.strength-bar { width: 100%; height: 20px; background: #21262D; border-radius: 10px; overflow: hidden; margin: 6px 0; }
+.strength-fill { height: 100%; border-radius: 10px; background: linear-gradient(90deg, #E84545, #FFD700); }
+.stars { color: #FFB900; }
+.verdict { background: rgba(255, 215, 0, 0.08); border: 1px solid #FFD700; border-radius: 10px; padding: 16px; margin: 16px 0; }
+.verdict h3 { color: #FFD700; margin-bottom: 8px; }
+.verdict-risk { background: rgba(232, 69, 69, 0.08); border: 1px solid #E84545; border-radius: 10px; padding: 16px; margin: 16px 0; }
+.verdict-risk h3 { color: #E84545; margin-bottom: 8px; }
+.verdict-blue { background: rgba(88, 166, 255, 0.08); border-left: 4px solid #58A6FF; border-radius: 0 10px 10px 0; padding: 16px; margin: 16px 0; }
+.verdict-blue h3 { color: #58A6FF; margin-bottom: 8px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.mainline { background: #161B22; border: 1px solid #30363D; border-radius: 12px; padding: 20px; margin: 16px 0; }
+.main-line-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.main-line-header h3 { margin: 0; font-size: 18px; }
+.risk-row { background: rgba(232, 69, 69, 0.08); }
+.gold-row { background: rgba(255, 215, 0, 0.08); }
+.sub-divider { border: none; border-top: 1px solid #30363D; margin: 30px 0; }
+.footer { text-align: center; color: #484F58; font-size: 12px; margin-top: 40px; padding-top: 20px; border-top: 1px solid #21262D; }
+@media (max-width: 768px) {
+  .index-card { grid-template-columns: 1fr; }
+  .market-stats { grid-template-columns: 1fr 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+  h1 { font-size: 20px; }
+  body { padding: 12px; }
+  table { font-size: 11px; }
+  th, td { padding: 6px 8px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
 
+<h1>{{ report_date }} A股深度复盘</h1>
+<div class="subtitle">数据截止：{{ data_date }} 收盘 ｜ {{ subtitle_text }}</div>
+
+<!-- ==================== 第一章：大盘概览 ==================== -->
+<h2><span class="emoji">📊</span>第一章：大盘概览</h2>
+
+<div class="index-card">
+  {% for idx in index_list %}
+  <div class="card">
+    <h3>{{ idx.name }}</h3>
+    <div class="value {% if idx.change >= 0 %}hl-red{% else %}hl-green{% endif %}">{{ "{:,.2f}".format(idx.value) }}</div>
+    <div class="change {% if idx.change >= 0 %}hl-red{% else %}hl-green{% endif %}">{{ "{:+.2f}".format(idx.change) }}%</div>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="market-stats">
+  <div class="stat">
+    <div class="num hl-red">{{ up_count }}</div>
+    <div class="label">上涨家数</div>
+  </div>
+  <div class="stat">
+    <div class="num hl-green">{{ down_count }}</div>
+    <div class="label">下跌家数</div>
+  </div>
+  <div class="stat">
+    <div class="num hl-red">{{ zt_count }}</div>
+    <div class="label">涨停家数</div>
+  </div>
+  <div class="stat">
+    <div class="num hl-green">{{ dt_count }}</div>
+    <div class="label">跌停家数</div>
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr><th>维度</th><th>数据</th><th>市场解读</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>指数表现</td>
+      <td>{% for idx in index_list %}{{ idx.name }}<span class="{% if idx.change >= 0 %}hl-red{% else %}hl-green{% endif %}">{{ "{:+.2f}".format(idx.change) }}%</span>{% if not loop.last %} > {% endif %}{% endfor %}</td>
+      <td>{{ index_interpretation }}</td>
+    </tr>
+    <tr>
+      <td>涨跌家数</td>
+      <td>上涨<span class="hl-red">{{ up_count }}</span> vs 下跌<span class="hl-green">{{ down_count }}</span></td>
+      <td>赚钱效应{% if up_count > down_count * 2 %}极佳{% elif up_count > down_count %}较好{% else %}偏弱{% endif %}，多头{% if up_count > down_count %}占据优势{% else %}处于劣势{% endif %}</td>
+    </tr>
+    <tr>
+      <td>涨停数量</td>
+      <td>涨停<span class="hl-red">{{ zt_count }}只</span>，连板<span class="hl-gold">{{ lianban_tiers|length }}只</span>，炸板{{ zb_count }}只</td>
+      <td>封板率{{ "{:.0f}".format(seal_rate) }}%，20cm涨停{{ zt_20cm }}只</td>
+    </tr>
+    <tr>
+      <td>成交量能</td>
+      <td>两市合计<span class="hl-blue">{{ "{:.0f}".format(total_amount_yi) }}亿</span></td>
+      <td>{% if total_amount_yi > 20000 %}量能充沛，资金活跃{% elif total_amount_yi > 10000 %}量能适中{% else %}量能偏低{% endif %}</td>
+    </tr>
+    <tr>
+      <td>板块领涨</td>
+      <td>{% for s in top_sectors[:3] %}{{ s.name }}<span class="hl-red">{{ "{:+.2f}".format(s.change) }}%</span>{% if not loop.last %}、{% endif %}{% endfor %}</td>
+      <td>领涨板块表现强势</td>
+    </tr>
+    {% if bottom_sectors %}
+    <tr>
+      <td>板块领跌</td>
+      <td>{% for s in bottom_sectors[:3] %}{{ s.name }}<span class="hl-green">{{ "{:+.2f}".format(s.change) }}%</span>{% if not loop.last %}、{% endif %}{% endfor %}</td>
+      <td>领跌板块承压</td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>
+
+<div class="verdict">
+  <h3>📊 核心判断</h3>
+  <p>{{ core_judgment }}</p>
+</div>
+
+<!-- ==================== 第二章：涨停跌停全景统计 ==================== -->
+<h2><span class="emoji">🔥</span>第二章：涨停跌停全景统计</h2>
+
+<table>
+  <thead>
+    <tr><th>分类</th><th>数量</th><th>占比/说明</th><th>特征备注</th></tr>
+  </thead>
+  <tbody>
+    <tr class="gold-row"><td>总涨停</td><td><span class="hl-red">{{ zt_count }}只</span></td><td>封板率{{ "{:.0f}".format(seal_rate) }}%</td><td>涨停潮级别</td></tr>
+    <tr><td>炸板/未封住</td><td><span class="hl-green">{{ zb_count }}只</span></td><td>占尝试涨停的{{ "{:.0f}".format(100 - seal_rate) }}%</td><td>封板成功率{{ "{:.0f}".format(seal_rate) }}%</td></tr>
+    <tr class="gold-row"><td>20cm涨停</td><td><span class="hl-red">{{ zt_20cm }}只</span></td><td>创业板+科创板</td><td>科技成长方向弹性大</td></tr>
+    <tr><td>总跌停</td><td><span class="hl-green">{{ dt_count }}只</span></td><td>{% if dt_count < 5 %}市场普涨无系统性风险{% else %}存在局部风险{% endif %}</td><td>{% if dt_count < 5 %}无明显恐慌性跌停{% else %}需关注跌停个股集中方向{% endif %}</td></tr>
+  </tbody>
+</table>
+
+<div class="two-col">
+  <div>
+    <h3>📌 非ST涨停主题分布</h3>
+    <table>
+      <thead><tr><th>主题方向</th><th>涨停数</th><th>强度</th></tr></thead>
+      <tbody>
+        {% for theme in zt_themes %}
+        <tr>
+          <td>{{ theme.name }}</td>
+          <td><span class="hl-red">{{ theme.count }}只</span></td>
+          <td><div class="strength-bar"><div class="strength-fill" style="width:{{ theme.strength }}%"></div></div></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <div class="verdict">
+      <h3>🔑 关键观察</h3>
+      <p>{{ key_observation }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 第三章：最强主线深度分析 ==================== -->
+<h2><span class="emoji">⚡</span>第三章：最强主线深度分析</h2>
+
+{% for mainline_name, stocks in mainline_ranked[:3] %}
+{% if loop.index > 1 %}<hr class="sub-divider">{% endif %}
+<div class="mainline">
+  <div class="main-line-header">
+    <h3>{% if loop.index == 1 %}🥇{% elif loop.index == 2 %}🥈{% else %}🥉{% endif %} 主线{{ loop.index }}：{{ mainline_name }}</h3>
+    <div><span class="tag tag-red">涨停{{ stocks|length }}只</span></div>
+  </div>
+  <div class="strength-bar"><div class="strength-fill" style="width:{{ [stocks|length * 20, 100]|min }}%"></div></div>
+
+  <table>
+    <thead>
+      <tr><th>标的</th><th>代码</th><th>涨幅</th><th>连板</th><th>所属行业</th></tr>
+    </thead>
+    <tbody>
+      {% for s in stocks[:8] %}
+      <tr class="{% if loop.index <= 3 %}gold-row{% endif %}">
+        <td><span class="{% if loop.index <= 3 %}hl-gold{% endif %}">{{ s.name }}</span></td>
+        <td>{{ s.code }}</td>
+        <td><span class="hl-red">{{ "{:+.2f}".format(s.change) }}%</span></td>
+        <td>{% if s.lianban > 1 %}<span class="tag tag-gold">{{ s.lianban }}连板</span>{% else %}<span class="tag tag-red">首板</span>{% endif %}</td>
+        <td>{{ s.industry }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endfor %}
+
+<!-- ==================== 第四章：连板梯队全景 ==================== -->
+<h2><span class="emoji">🏁</span>第四章：连板梯队全景</h2>
+
+{% if lianban_tiers %}
+<table>
+  <thead>
+    <tr><th>梯队</th><th>标的</th><th>代码</th><th>连板数</th><th>涨停原因</th></tr>
+  </thead>
+  <tbody>
+    {% for item in lianban_tiers %}
+    <tr class="{% if item.tier >= 3 %}gold-row{% endif %}">
+      <td><span class="{% if item.tier >= 3 %}hl-gold{% else %}hl-blue{% endif %}">{{ item.tier }}板</span></td>
+      <td><span class="{% if item.tier >= 3 %}hl-gold{% endif %}">{{ item.name }}</span></td>
+      <td>{{ item.code }}</td>
+      <td><span class="hl-red">{{ item.tier }}连板</span></td>
+      <td>{{ item.reason }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p style="color:#8B949E;">今日无连板股数据</p>
+{% endif %}
+
+<div class="verdict-risk">
+  <h3>⚠️ 连板生态总结</h3>
+  <p>今日最高连板为<strong class="hl-gold">{{ max_tier }}板</strong>，连板股共<strong>{{ lianban_tiers|length }}</strong>只。<br>
+  {% if max_tier >= 3 %}
+  <strong class="hl-red">高位分歧风险加剧：</strong>存在{{ max_tier }}板及以上高位股，需关注次日封板情况和分歧力度。
+  {% else %}
+  <strong class="hl-blue">连板高度有限：</strong>最高仅{{ max_tier }}板，说明市场接力意愿一般，短线情绪偏谨慎。
+  {% endif %}</p>
+</div>
+
+<!-- ==================== 第五章：跌停风险警示 ==================== -->
+{% if dt_pool is not empty and dt_count > 0 %}
+<h2><span class="emoji">⚠️</span>第五章：跌停风险警示</h2>
+<table>
+  <thead>
+    <tr><th>标的</th><th>代码</th><th>跌幅</th><th>所属行业</th></tr>
+  </thead>
+  <tbody>
+    {% for _, s in dt_pool.iterrows() %}
+    <tr class="risk-row">
+      <td>{{ s.get("名称", "") }}</td>
+      <td>{{ s.get("代码", "") }}</td>
+      <td><span class="hl-green">{{ "{:+.2f}".format(s.get("涨跌幅", 0)) }}%</span></td>
+      <td>{{ s.get("所属行业", "") }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+<!-- ==================== 第六章：今日核心判断 ==================== -->
+<h2><span class="emoji">🎯</span>第六章：今日核心判断</h2>
+
+<table>
+  <thead>
+    <tr><th>优先级</th><th>风口/方向</th><th>涨停数</th><th>核心催化剂</th><th>策略建议</th></tr>
+  </thead>
+  <tbody>
+    {% for mainline_name, stocks in mainline_ranked %}
+    <tr class="{% if loop.index <= 2 %}gold-row{% endif %}">
+      <td>{% if loop.index == 1 %}🥇{% elif loop.index == 2 %}🥈{% elif loop.index == 3 %}🥉{% else %}{{ loop.index }}{% endif %}</td>
+      <td><span class="{% if loop.index <= 2 %}hl-gold{% else %}hl-red{% endif %}">{{ mainline_name }}</span></td>
+      <td><span class="hl-red">{{ stocks|length }}只</span></td>
+      <td>{{ mainline_catalysts.get(mainline_name, "") }}</td>
+      <td>{% if loop.index <= 2 %}<span class="tag tag-green">🟢核心做多</span>{% elif loop.index <= 4 %}<span class="tag tag-gold">🟡跟随做多</span>{% else %}<span class="tag tag-gray">🔴暂时回避</span>{% endif %}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<p style="font-size:12px;color:#8B949E;margin-top:8px;">标签说明：🟢核心做多 = 主升浪方向，可重仓参与 ｜ 🟡跟随做多 = 逻辑成立但非最强，适量参与 ｜ 🔴坚决回避 = 资金流出或逻辑证伪</p>
+
+<!-- ==================== 第七章：操作策略 ==================== -->
+<h2><span class="emoji">💼</span>第七章：操作策略</h2>
+
+<div class="verdict-blue">
+  <h3>👁️ 明日观察要点</h3>
+  <ol>
+    <li><strong>🔮 主线龙头接力：</strong>关注最强主线（{{ mainline_ranked[0][0] if mainline_ranked else '无' }}）龙头能否继续封板或走出二板</li>
+    <li><strong>⭐ 高位分歧：</strong>{% if max_tier >= 3 %}关注{{ max_tier }}板高位股次日封板情况，警惕分歧风险{% else %}连板高度有限，关注首板方向能否走出二板{% endif %}</li>
+    <li><strong>📊 量能变化：</strong>今日两市成交{{ "{:.0f}".format(total_amount_yi) }}亿，明日关注量能能否维持</li>
+    <li><strong>🏭 板块扩散：</strong>关注最强主线能否向产业链上下游扩散</li>
+  </ol>
+</div>
+
+<div class="verdict-risk">
+  <h3>🚨 风险提示</h3>
+  <ol>
+    {% if max_tier >= 3 %}
+    <li><strong class="hl-red">高位连板股分歧风险：</strong>{{ max_tier }}板高位股次日大概率出现明显分歧</li>
+    {% endif %}
+    <li><strong class="hl-red">量能衰减风险：</strong>若后续量能快速萎缩，行情可能转为震荡</li>
+    <li><strong class="hl-red">获利盘回吐风险：</strong>今日涨幅较大标的短线获利盘丰厚，存在回吐压力</li>
+    <li><strong class="hl-red">主线轮动风险：</strong>若资金分流可能导致主线弱化</li>
+  </ol>
+</div>
+
+<!-- ==================== 页脚 ==================== -->
+<div class="footer">
+  <p>数据来源：AkShare · 东方财富 ｜ 数据截止时间：{{ data_date }} 15:00</p>
+  <p style="margin-top:8px;">以上仅为数据分析，不构成任何投资建议。股市有风险，投资需谨慎。</p>
+</div>
+
+</div>
+</body>
+</html>
