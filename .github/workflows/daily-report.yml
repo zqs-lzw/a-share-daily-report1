@@ -1,1 +1,48 @@
+name: A股每日复盘报告
 
+on:
+  schedule:
+    # 北京时间 15:30 = UTC 7:30
+    # 周一至周五执行
+    - cron: '30 7 * * 1-5'
+  workflow_dispatch:  # 支持手动触发
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: 安装依赖
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 生成复盘报告
+        env:
+          TZ: Asia/Shanghai
+        run: python generate.py
+
+      - name: 上传报告为 Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: a-share-report-${{ github.run_id }}
+          path: output/
+          retention-days: 30
+
+      - name: 部署到 GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output
+          publish_branch: gh-pages
