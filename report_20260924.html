@@ -1,0 +1,656 @@
+
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<标题>2026年9月24日 A股深度复盘</标题>
+<样式>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.hl-red { color: #E84545; font-weight: bold; }
+.hl-green { color: #00A86B; font-weight: bold; }
+.hl-gold { color: #FFD700; font-weight: bold; }
+.hl-blue { color: #58A6FF; font-weight: bold; }
+.strength-bar { width: 100%; height: 20px; background: #21262D; border-radius: 10px; overflow: hidden; margin: 6px 0; }
+.strength-fill { height: 100%; border-radius: 10px; background: linear-gradient(90deg, #E84545, #FFD700); }
+.stars { color: #FFB900; }
+.verdict { background: rgba(255, 215, 0, 0.08); border: 1px solid #FFD700; border-radius: 10px; padding: 16px; margin: 16px 0; }
+.verdict h3 { color: #FFD700; margin-bottom: 8px; }
+.verdict-risk { background: rgba(232, 69, 69, 0.08); border: 1px solid #E84545; border-radius: 10px; padding: 16px; margin: 16px 0; }
+.verdict-risk h3 { color: #E84545; margin-bottom: 8px; }
+.verdict-blue { background: rgba(88, 166, 255, 0.08); border-left: 4px solid #58A6FF; border-radius: 0 10px 10px 0; padding: 16px; margin: 16px 0; }
+.verdict-blue h3 { color: #58A6FF; margin-bottom: 8px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.mainline { background: #161B22; border: 1px solid #30363D; border-radius: 12px; padding: 20px; margin: 16px 0; }
+.main-line-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.main-line-header h3 { margin: 0; font-size: 18px; }
+.risk-row { background: rgba(232, 69, 69, 0.08); }
+.gold-row { background: rgba(255, 215, 0, 0.08); }
+.sub-divider { border: none; border-top: 1px solid #30363D; margin: 30px 0; }
+.footer { text-align: center; color: #484F58; font-size: 12px; margin-top: 40px; padding-top: 20px; border-top: 1px solid #21262D; }
+@media (max-width: 768px) {
+  .index-card { grid-template-columns: 1fr; }
+  .market-stats { grid-template-columns: 1fr 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+  h1 { font-size: 20px; }
+  body { padding: 12px; }
+  table { font-size: 11px; }
+  th, td { padding: 6px 8px; }
+}
+样式>
+头部>
+<body>
+<div class="container">
+
+<h1>2026年9月24日 A股深度复盘</h1>
+<div class="subtitle">数据截止：2026-09-24 收盘 ｜ 涨-2.7%，52股涨停，其他领涨</div>
+
+<!-- ==================== 第一章：大盘概览 ==================== -->
+<h2><span class="emoji">📊</span>第一章：大盘概览</h2>
+
+<div class="index-card">
+  
+  <div class="card">
+    <h3>上证指数</h3>
+    <div class="value hl-green">3,888.37</div>
+    <div class="change hl-green">-1.22%</div>
+  </div>
+  
+  <div class="card">
+    <h3>深证成指</h3>
+    <div class="value hl-green">13,316.97</div>
+    <div class="change hl-green">-2.34%</div>
+  </div>
+  
+  <div class="card">
+    <h3>创业板指</h3>
+    <div class="value hl-green">3,288.95</div>
+    <div class="change hl-green">-2.68%</div>
+  </div>
+  
+</div>
+
+<div class="market-stats">
+  <div class="stat">
+    <div class="num hl-red">1120</div>
+    <div class="label">上涨家数</div>
+  </div>
+  <div class="stat">
+    <div class="num hl-green">4305</div>
+    <div class="label">下跌家数</div>
+  </div>
+  <div class="stat">
+    <div class="num hl-red">52</div>
+    <div class="label">涨停家数</div>
+  </div>
+  <div class="stat">
+    <div class="num hl-green">13</div>
+    <div class="label">跌停家数</div>
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr><th>维度</th><th>数据</th><th>市场解读</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>指数表现</td>
+      <td>上证指数<span class="hl-green">-1.22%</span> > 深证成指<span class="hl-green">-2.34%</span> > 创业板指<span class="hl-green">-2.68%</span></td>
+      <td>价值风格占优，大盘蓝筹表现强于成长</td>
+    </tr>
+    <tr>
+      <td>涨跌家数</td>
+      <td>上涨<span class="hl-red">1120</span> vs 下跌<span class="hl-green">4305</span></td>
+      <td>赚钱效应偏弱，多头处于劣势</td>
+    </tr>
+    <tr>
+      <td>涨停数量</td>
+      <td>涨停<span class="hl-red">52只</span>，连板<span class="hl-gold">13只</span>，炸板10只</td>
+      <td>封板率84%，20cm涨停6只</td>
+    </tr>
+    <tr>
+      <td>成交量能</td>
+      <td>两市合计<span class="hl-blue">16689亿</span></td>
+      <td>量能适中</td>
+    </tr>
+    <tr>
+      <td>板块领涨</td>
+      <td></td>
+      <td>领涨板块表现强势</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div class="verdict">
+  <h3>📊 核心判断</h3>
+  <p>今日两市涨停<strong class='hl-red'>52只</strong>，上涨家数<strong class='hl-red'>1120</strong>只，两市成交<strong class='hl-blue'>16689亿</strong>。 最强主线为<strong class='hl-gold'>其他</strong>，该方向涨停<strong>49</strong>只，为今日资金主攻方向。 涨停家数中等偏上，市场情绪偏暖。</p>
+</div>
+
+<!-- ==================== 第二章：涨停跌停全景统计 ==================== -->
+<h2><span class="emoji">🔥</span>第二章：涨停跌停全景统计</h2>
+
+<table>
+  <thead>
+    <tr><th>分类</th><th>数量</th><th>占比/说明</th><th>特征备注</th></tr>
+  </thead>
+  <tbody>
+    <tr class="gold-row"><td>总涨停</td><td><span class="hl-red">52只</span></td><td>封板率84%</td><td>涨停潮级别</td></tr>
+    <tr><td>炸板/未封住</td><td><span class="hl-green">10只</span></td><td>占尝试涨停的16%</td><td>封板成功率84%</td></tr>
+    <tr class="gold-row"><td>20cm涨停</td><td><span class="hl-red">6只</span></td><td>创业板+科创板</td><td>科技成长方向弹性大</td></tr>
+    <tr><td>总跌停</td><td><span class="hl-green">13只</span></td><td>存在局部风险</td><td>需关注跌停个股集中方向</td></tr>
+  </tbody>
+</table>
+
+<div class="two-col">
+  <div>
+    <h3>📌 非ST涨停主题分布</h3>
+    <table>
+      <thead><tr><th>主题方向</th><th>涨停数</th><th>强度</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>其他</td>
+          <td><span class="hl-red">49只</span></td>
+          <td><div class="strength-bar"><div class="strength-fill" style="width:100%"></div></div></td>
+        </tr>
+        
+        <tr>
+          <td>半导体</td>
+          <td><span class="hl-red">2只</span></td>
+          <td><div class="strength-bar"><div class="strength-fill" style="width:4%"></div></div></td>
+        </tr>
+        
+        <tr>
+          <td>AI硬件/CPO/光通信</td>
+          <td><span class="hl-red">1只</span></td>
+          <td><div class="strength-bar"><div class="strength-fill" style="width:2%"></div></div></td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <div class="verdict">
+      <h3>🔑 关键观察</h3>
+      <p><strong class='hl-gold'>涨停主题高度集中于其他</strong>，该方向贡献了49只涨停。<br><br><strong class='hl-red'>高位连板风险：</strong>最高5板，高位股分歧概率加大。<br><br><strong class='hl-orange'>炸板率：</strong>炸板10只，封板率84%。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 第三章：最强主线深度分析 ==================== -->
+<h2><span class="emoji">⚡</span>第三章：最强主线深度分析</h2>
+
+
+
+<div class="mainline">
+  <div class="main-line-header">
+    <h3>🥇 主线1：其他</h3>
+    <div><span class="tag tag-red">涨停49只</span></div>
+  </div>
+  <div class="strength-bar"><div class="strength-fill" style="width:100%"></div></div>
+
+  <table>
+    <thead>
+      <tr><th>标的</th><th>代码</th><th>涨幅</th><th>连板</th><th>所属行业</th></tr>
+    </thead>
+    <tbody>
+      
+      <tr class="gold-row">
+        <td><span class="hl-gold">山东路桥</span></td>
+        <td>000498</td>
+        <td><span class="hl-red">+9.92%</span></td>
+        <td><span class="tag tag-red">首板</span></td>
+        <td>基础建设</td>
+      </tr>
+      
+      <tr class="gold-row">
+        <td><span class="hl-gold">华茂股份</span></td>
+        <td>000850</td>
+        <td><span class="hl-red">+10.11%</span></td>
+        <td><span class="tag tag-gold">2连板</span></td>
+        <td>纺织制造</td>
+      </tr>
+      
+      <tr class="gold-row">
+        <td><span class="hl-gold">泰慕士</span></td>
+        <td>001234</td>
+        <td><span class="hl-red">+10.01%</span></td>
+        <td><span class="tag tag-gold">4连板</span></td>
+        <td>服装家纺</td>
+      </tr>
+      
+      <tr class="">
+        <td><span class="">新华传媒</span></td>
+        <td>600825</td>
+        <td><span class="hl-red">+10.06%</span></td>
+        <td><span class="tag tag-gold">4连板</span></td>
+        <td>出版</td>
+      </tr>
+      
+      <tr class="">
+        <td><span class="">三星电气</span></td>
+        <td>601567</td>
+        <td><span class="hl-red">+10.02%</span></td>
+        <td><span class="tag tag-red">首板</span></td>
+        <td>电网设备</td>
+      </tr>
+      
+      <tr class="">
+        <td><span class="">雪龙集团</span></td>
+        <td>603949</td>
+        <td><span class="hl-red">+10.03%</span></td>
+        <td><span class="tag tag-gold">2连板</span></td>
+        <td>汽车零部</td>
+      </tr>
+      
+      <tr class="">
+        <td><span class="">东方中科</span></td>
+        <td>002819</td>
+        <td><span class="hl-red">+9.98%</span></td>
+        <td><span class="tag tag-gold">2连板</span></td>
+        <td>通用设备</td>
+      </tr>
+      
+      <tr class="">
+        <td><span class="">新华文轩</span></td>
+        <td>601811</td>
+        <td><span class="hl-red">+10.00%</span></td>
+        <td><span class="tag tag-gold">5连板</span></td>
+        <td>出版</td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+
+<hr class="sub-divider">
+<div class="mainline">
+  <div class="main-line-header">
+    <h3>🥈 主线2：半导体</h3>
+    <div><span class="tag tag-red">涨停2只</span></div>
+  </div>
+  <div class="strength-bar"><div class="strength-fill" style="width:40%"></div></div>
+
+  <table>
+    <thead>
+      <tr><th>标的</th><th>代码</th><th>涨幅</th><th>连板</th><th>所属行业</th></tr>
+    </thead>
+    <tbody>
+      
+      <tr class="gold-row">
+        <td><span class="hl-gold">康强电子</span></td>
+        <td>002119</td>
+        <td><span class="hl-red">+9.99%</span></td>
+        <td><span class="tag tag-gold">2连板</span></td>
+        <td>半导体</td>
+      </tr>
+      
+      <tr class="gold-row">
+        <td><span class="hl-gold">盛景微</span></td>
+        <td>603375</td>
+        <td><span class="hl-red">+10.01%</span></td>
+        <td><span class="tag tag-red">首板</span></td>
+        <td>半导体</td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+
+<hr class="sub-divider">
+<div class="mainline">
+  <div class="main-line-header">
+    <h3>🥉 主线3：AI硬件/CPO/光通信</h3>
+    <div><span class="tag tag-red">涨停1只</span></div>
+  </div>
+  <div class="strength-bar"><div class="strength-fill" style="width:20%"></div></div>
+
+  <table>
+    <thead>
+      <tr><th>标的</th><th>代码</th><th>涨幅</th><th>连板</th><th>所属行业</th></tr>
+    </thead>
+    <tbody>
+      
+      <tr class="gold-row">
+        <td><span class="hl-gold">华脉科技</span></td>
+        <td>603042</td>
+        <td><span class="hl-red">+9.98%</span></td>
+        <td><span class="tag tag-red">首板</span></td>
+        <td>通信设备</td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+
+
+<!-- ==================== 第四章：连板梯队全景 ==================== -->
+<h2><span class="emoji">🏁</span>第四章：连板梯队全景</h2>
+
+
+<table>
+  <thead>
+    <tr><th>梯队</th><th>标的</th><th>代码</th><th>连板数</th><th>涨停原因</th></tr>
+  </thead>
+  <tbody>
+    
+    <tr class="gold-row">
+      <td><span class="hl-gold">5板</span></td>
+      <td><span class="hl-gold">新华文轩</span></td>
+      <td>601811</td>
+      <td><span class="hl-red">5连板</span></td>
+      <td>出版</td>
+    </tr>
+    
+    <tr class="gold-row">
+      <td><span class="hl-gold">4板</span></td>
+      <td><span class="hl-gold">泰慕士</span></td>
+      <td>001234</td>
+      <td><span class="hl-red">4连板</span></td>
+      <td>服装家纺</td>
+    </tr>
+    
+    <tr class="gold-row">
+      <td><span class="hl-gold">4板</span></td>
+      <td><span class="hl-gold">新华传媒</span></td>
+      <td>600825</td>
+      <td><span class="hl-red">4连板</span></td>
+      <td>出版</td>
+    </tr>
+    
+    <tr class="gold-row">
+      <td><span class="hl-gold">4板</span></td>
+      <td><span class="hl-gold">奥佳华</span></td>
+      <td>002614</td>
+      <td><span class="hl-red">4连板</span></td>
+      <td>其他家电</td>
+    </tr>
+    
+    <tr class="gold-row">
+      <td><span class="hl-gold">3板</span></td>
+      <td><span class="hl-gold">天威视讯</span></td>
+      <td>002238</td>
+      <td><span class="hl-red">3连板</span></td>
+      <td>电视广播</td>
+    </tr>
+    
+    <tr class="">
+      <td><span class="hl-blue">2板</span></td>
+      <td><span class="">华茂股份</span></td>
+      <td>000850</td>
+      <td><span class="hl-red">2连板</span></td>
+      <td>纺织制造</td>
+    </tr>
+    
+    <tr class="">
+      <td><span class="hl-blue">2板</span></td>
+      <td><span class="">雪龙集团</span></td>
+      <td>603949</td>
+      <td><span class="hl-red">2连板</span></td>
+      <td>汽车零部</td>
+    </tr>
+    
+    <tr class="">
+      <td><span class="hl-blue">2板</span></td>
+      <td><span class="">东方中科</span></td>
+      <td>002819</td>
+      <td><span class="hl-red">2连板</span></td>
+      <td>通用设备</td>
+    </tr>
+    
+    <tr class="">
+      <td><span class="hl-blue">2板</span></td>
+      <td><span class="">康强电子</span></td>
+      <td>002119</td>
+      <td><span class="hl-red">2连板</span></td>
+      <td>半导体</td>
+    </tr>
+    
+    <tr class="">
+      <td><span class="hl-blue">2板</span></td>
+      <td><span class="">金辰股份</span></td>
+      <td>603396</td>
+      <td><span class="hl-red">2连板</span></td>
+      <td>光伏设备</td>
+    </tr>
+    
+    <tr class="">
+      <td><span class="hl-blue">2板</span></td>
+      <td><span class="">集泰股份</span></td>
+      <td>002909</td>
+      <td><span class="hl-red">2连板</span></td>
+      <td>化学制品</td>
+    </tr>
+    
+    <tr class="">
+      <td><span class="hl-blue">2板</span></td>
+      <td><span class="">上工申贝</span></td>
+      <td>600843</td>
+      <td><span class="hl-red">2连板</span></td>
+      <td>专用设备</td>
+    </tr>
+    
+    <tr class="">
+      <td><span class="hl-blue">2板</span></td>
+      <td><span class="">福建水泥</span></td>
+      <td>600802</td>
+      <td><span class="hl-red">2连板</span></td>
+      <td>水泥</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+<div class="verdict-risk">
+  <h3>⚠️ 连板生态总结</h3>
+  <p>今日最高连板为<strong class="hl-gold">5板</strong>，连板股共<strong>13</strong>只。<br>
+  
+  <strong class="hl-red">高位分歧风险加剧：</strong>存在5板及以上高位股，需关注次日封板情况和分歧力度。
+  </p>
+</div>
+
+<!-- ==================== 第五章：跌停风险警示 ==================== -->
+
+<h2><span class="emoji">⚠️</span>第五章：跌停风险警示</h2>
+<table>
+  <thead>
+    <tr><th>标的</th><th>代码</th><th>跌幅</th><th>所属行业</th></tr>
+  </thead>
+  <tbody>
+    
+    <tr class="risk-row">
+      <td>华媒控股</td>
+      <td>000607</td>
+      <td><span class="hl-green">-10.04%</span></td>
+      <td>广告营销</td>
+    </tr>
+    
+    <tr class="risk-row">
+      <td>一鸣食品</td>
+      <td>605179</td>
+      <td><span class="hl-green">-10.00%</span></td>
+      <td>饮料乳品</td>
+    </tr>
+    
+    <tr class="risk-row">
+      <td>百合花</td>
+      <td>603823</td>
+      <td><span class="hl-green">-10.01%</span></td>
+      <td>化学制品</td>
+    </tr>
+    
+    <tr class="risk-row">
+      <td>德龙汇能</td>
+      <td>000593</td>
+      <td><span class="hl-green">-10.00%</span></td>
+      <td>燃气Ⅱ</td>
+    </tr>
+    
+    <tr class="risk-row">
+      <td>世纪数码</td>
+      <td>920229</td>
+      <td><span class="hl-green">-30.00%</span></td>
+      <td>专用设备</td>
+    </tr>
+    
+    <tr class="risk-row">
+      <td>凯达重工</td>
+      <td>920025</td>
+      <td><span class="hl-green">-30.00%</span></td>
+      <td>专用设备</td>
+    </tr>
+    
+    <tr class="risk-row">
+      <td>莱宝高科</td>
+      <td>002106</td>
+      <td><span class="hl-green">-10.00%</span></td>
+      <td>光学光电</td>
+    </tr>
+    
+    <tr class="risk-row">
+      <td>桂林旅游</td>
+      <td>000978</td>
+      <td><span class="hl-green">-10.01%</span></td>
+      <td>旅游及景</td>
+    </tr>
+    
+    <tr class="risk-row">
+      <td>国芳集团</td>
+      <td>601086</td>
+      <td><span class="hl-green">-9.99%</span></td>
+      <td>一般零售</td>
+    </tr>
+    
+    <tr class="risk-row">
+      <td>华丽家族</td>
+      <td>600503</td>
+      <td><span class="hl-green">-9.86%</span></td>
+      <td>房地产开</td>
+    </tr>
+    
+    <tr class="risk-row">
+      <td>哈药股份</td>
+      <td>600664</td>
+      <td><span class="hl-green">-9.96%</span></td>
+      <td>化学制药</td>
+    </tr>
+    
+    <tr class="risk-row">
+      <td>超声电子</td>
+      <td>000823</td>
+      <td><span class="hl-green">-10.00%</span></td>
+      <td>元件</td>
+    </tr>
+    
+    <tr class="risk-row">
+      <td>沈鼓集团</td>
+      <td>601091</td>
+      <td><span class="hl-green">-10.00%</span></td>
+      <td>专用设备</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+<!-- ==================== 第六章：今日核心判断 ==================== -->
+<h2><span class="emoji">🎯</span>第六章：今日核心判断</h2>
+
+<table>
+  <thead>
+    <tr><th>优先级</th><th>风口/方向</th><th>涨停数</th><th>核心催化剂</th><th>策略建议</th></tr>
+  </thead>
+  <tbody>
+    
+    <tr class="gold-row">
+      <td>🥇</td>
+      <td><span class="hl-gold">其他</span></td>
+      <td><span class="hl-red">49只</span></td>
+      <td>多因素催化</td>
+      <td><span class="tag tag-green">🟢核心做多</span></td>
+    </tr>
+    
+    <tr class="gold-row">
+      <td>🥈</td>
+      <td><span class="hl-gold">半导体</span></td>
+      <td><span class="hl-red">2只</span></td>
+      <td>国产替代+需求回暖</td>
+      <td><span class="tag tag-green">🟢核心做多</span></td>
+    </tr>
+    
+    <tr class="">
+      <td>🥉</td>
+      <td><span class="hl-red">AI硬件/CPO/光通信</span></td>
+      <td><span class="hl-red">1只</span></td>
+      <td>AI算力扩张+光模块需求爆发</td>
+      <td><span class="tag tag-gold">🟡跟随做多</span></td>
+    </tr>
+    
+  </tbody>
+</table>
+<p style="font-size:12px;color:#8B949E;margin-top:8px;">标签说明：🟢核心做多 = 主升浪方向，可重仓参与 ｜ 🟡跟随做多 = 逻辑成立但非最强，适量参与 ｜ 🔴坚决回避 = 资金流出或逻辑证伪</p>
+
+<!-- ==================== 第七章：操作策略 ==================== -->
+<h2><span class="emoji">💼</span>第七章：操作策略</h2>
+
+<div class="verdict-blue">
+  <h3>👁️ 明日观察要点</h3>
+  <ol>
+    <li><strong>🔮 主线龙头接力：</strong>关注最强主线（其他）龙头能否继续封板或走出二板</li>
+    <li><strong>⭐ 高位分歧：</strong>关注5板高位股次日封板情况，警惕分歧风险</li>
+    <li><strong>📊 量能变化：</strong>今日两市成交16689亿，明日关注量能能否维持</li>
+    <li><strong>🏭 板块扩散：</strong>关注最强主线能否向产业链上下游扩散</li>
+  </ol>
+</div>
+
+<div class="verdict-risk">
+  <h3>🚨 风险提示</h3>
+  <ol>
+    
+    <li><strong class="hl-red">高位连板股分歧风险：</strong>5板高位股次日大概率出现明显分歧</li>
+    
+    <li><strong class="hl-red">量能衰减风险：</strong>若后续量能快速萎缩，行情可能转为震荡</li>
+    <li><strong class="hl-red">获利盘回吐风险：</strong>今日涨幅较大标的短线获利盘丰厚，存在回吐压力</li>
+    <li><strong class="hl-red">主线轮动风险：</strong>若资金分流可能导致主线弱化</li>
+  </ol>
+</div>
+
+<!-- ==================== 页脚 ==================== -->
+<div class="footer">
+  <p>数据来源：AkShare · 东方财富 ｜ 数据截止时间：2026-09-24 15:00</p>
+  <p style="margin-top:8px;">以上仅为数据分析，不构成任何投资建议。股市有风险，投资需谨慎。</p>
+</div>
+
+</div>
+</body>
+</html>
